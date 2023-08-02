@@ -1,20 +1,16 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+// import { useState } from 'react';
 import './App.css';
+import { Button } from 'antd';
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className="flex justify-center">
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} alt="React logo" />
-        </a>
+      {' '}
+      <Button type="primary">Button</Button>
+      {/* <div className="flex justify-center">
+        <Button type="primary">Button</Button>
       </div>
       <h1>Vite + React</h1>
       <div className="card">
@@ -27,7 +23,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
   );
 }
