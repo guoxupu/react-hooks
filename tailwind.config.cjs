@@ -4,4 +4,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  corePlugins: {
+    preflight: false, //解决taliwind与antd颜色冲突问题
+  },
 };
