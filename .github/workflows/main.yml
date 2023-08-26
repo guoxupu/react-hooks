@@ -23,7 +23,7 @@ jobs:
       env:
         LASTSSH: "Doing something after copying"
       with:
-        host: ${{ secrets.REMORT_HOST }}
+        ["host", `${{ secrets.REMORT_HOST }}`]
         username: ${{ secrets.REMORT_USER }}
         password: ${{ secrets.REMORT_PASSWORD }}
         source: './dist' 
