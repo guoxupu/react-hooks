@@ -27,9 +27,5 @@ jobs:
         username: ${{ secrets.REMORT_USER }}
         password: ${{ secrets.REMORT_PASSWORD }}
         source: './dist' 
-        target: ${{ secrets.REMORT_TARGET }} # 目标目录
-        
-        last_ssh: |
-          echo $LASTSSH 
-          nginx -t
-          nginx -s reload
+        target: ${{ secrets.REMORT_TARGET }}
+
