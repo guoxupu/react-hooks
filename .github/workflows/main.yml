@@ -1,0 +1,35 @@
+name: ssh deploy 
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js Build
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.16.0
+        cache: 'npm'
+    - run: npm install
+    - run: npm run build
+    - name: copy dist file with scp
+      uses: appleboy/scp-action@v0.0.1
+      env:
+        LASTSSH: "Doing something after copying"
+      with:
+        host: ${{ secrets.REMORT_HOST }}
+        username: ${{ secrets.REMORT_USER }}
+        password: ${{ secrets.REMORT_PASSWORD }}
+        source: './dist' 
+        target: ${{ secrets.REMORT_TARGET }} # 目标目录
+        
+        last_ssh: |
+          echo $LASTSSH 
+          nginx -t
+          nginx -s reload
