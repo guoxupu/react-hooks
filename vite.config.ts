@@ -36,4 +36,17 @@ export default defineConfig({
       },
     },
   },
+  esbuild: { jsx: 'automatic' },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          '@ant-design/icons': ['@ant-design/icons'],
+          '@ant-design/pro-layout': ['@ant-design/pro-layout'],
+          '@ant-design/pro-skeleton': ['@ant-design/pro-skeleton'],
+        },
+      },
+    },
+  },
 });

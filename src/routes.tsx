@@ -10,6 +10,7 @@ const UserLogin = lazy(() => import('./routes/user.login'));
 const Home = lazy(() => import('@/routes/home'));
 const DataScreen = lazy(() => import('@/routes/dataScreen'));
 const ProTable = lazy(() => import('@/routes/proTable'));
+const Counter = lazy(() => import('@/routes/counter'));
 
 export const routes: Array<RouteObject> = [
   // { path: '/', element: <App /> },
@@ -46,6 +47,14 @@ export const routes: Array<RouteObject> = [
     element: (
       <Suspense fallback={<ListPageSkeleton />}>
         <ProTable />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/proTable/useComponent',
+    element: (
+      <Suspense fallback={<ListPageSkeleton />}>
+        <Counter />
       </Suspense>
     ),
   },
