@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from 'react-router-dom';
 // Hack 等待7.x版本修复
-import { ProBreadcrumb, ProLayout } from '@ant-design/pro-layout';
+import { PageLoading, ProBreadcrumb, ProLayout } from '@ant-design/pro-layout';
 import { getMenuList } from './domain/user/services';
 import {
   Avatar,
@@ -22,6 +22,8 @@ import AntIcon from './components/AntIcon';
 import useAuth from './hooks/useAuth';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { USER } from './domain/user/constant';
+import { useEffect } from 'react';
+import { useRequest } from 'ahooks';
 
 export default function AppLayout() {
   const { loginPath } = useAuth();
@@ -30,10 +32,19 @@ export default function AppLayout() {
 
   // const { data } = useRequest(getAuthorButtons);
   const isLoginPage = loginPath === location.pathname;
-  // if (!token && !isLoginPage) {
-  //   return <PageLoading />;
-  // }
-  // 退出登录
+
+  useRequest(getMenuList, {
+    ready: !isLoginPage,
+    refreshDeps: [location.pathname],
+    onSuccess: (result) => {
+      console.log(1);
+      if (!result) {
+        navigate(loginPath);
+      }
+    },
+    debounceWait: 100,
+  });
+
   const logout = () => {
     Modal.confirm({
       title: '温馨提示 🧡',
@@ -48,6 +59,10 @@ export default function AppLayout() {
       },
     });
   };
+
+  if (!localStorage.getItem('User') && !isLoginPage) {
+    return <PageLoading />;
+  }
 
   if (isLoginPage) {
     return <Outlet />;

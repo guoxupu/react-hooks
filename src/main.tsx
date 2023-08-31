@@ -14,14 +14,7 @@ const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ConfigProvider
-      locale={zhCN}
-      // theme={{
-      //   token: {
-      //     colorPrimary: '#00b96b',
-      //   },
-      // }}
-    >
+    <ConfigProvider locale={zhCN}>
       <Provider store={store}>
         <RouterProvider router={router} fallbackElement={<PageLoading />} />
       </Provider>

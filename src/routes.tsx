@@ -4,6 +4,7 @@ import { ListPageSkeleton } from '@ant-design/pro-skeleton';
 import AppBoundary from './components/AppBoundary';
 import App from './App';
 import { AuthProvider } from './hooks/useAuth';
+import { PageLoading } from '@ant-design/pro-layout';
 
 const NotFound = lazy(() => import('./routes/404'));
 const UserLogin = lazy(() => import('./routes/user.login'));
@@ -17,7 +18,7 @@ export const routes: Array<RouteObject> = [
   {
     path: '/login',
     element: (
-      <Suspense fallback={<ListPageSkeleton />}>
+      <Suspense fallback={<PageLoading />}>
         <UserLogin />
       </Suspense>
     ),
