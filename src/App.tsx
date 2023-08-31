@@ -22,7 +22,6 @@ import AntIcon from './components/AntIcon';
 import useAuth from './hooks/useAuth';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { USER } from './domain/user/constant';
-import { useEffect } from 'react';
 import { useRequest } from 'ahooks';
 
 export default function AppLayout() {
