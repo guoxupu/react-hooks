@@ -68,7 +68,7 @@ const LoginForm = () => {
           }}
           icon={<CloseCircleOutlined />}
         >
-          {'login.reset'}
+          Reset
         </Button>
         <Button
           type="primary"
@@ -76,7 +76,7 @@ const LoginForm = () => {
           loading={loading}
           icon={<UserOutlined />}
         >
-          {'login.confirm'}
+          Login
         </Button>
       </Form.Item>
     </Form>
