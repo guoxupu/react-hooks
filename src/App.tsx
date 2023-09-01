@@ -72,6 +72,7 @@ export default function AppLayout() {
       title="Hooks Admin"
       logo="/logo.png"
       location={location}
+      layout="mix"
       fixedHeader
       fixSiderbar
       // loading={loadingUserRoute || loadingSecret}
@@ -104,12 +105,25 @@ export default function AppLayout() {
         title: 'hooks',
         render: () => (
           <Space>
-            <NavRightContent
-              // name={user?.fullName}
-              onLogout={logout}
-            />
+            <NavRightContent name="hooks" onLogout={logout} />
           </Space>
         ),
+      }}
+      breadcrumbRender={undefined}
+      token={{
+        sider: {
+          colorMenuBackground: '#001529', // sider背景色
+          colorTextMenuSelected: '#fff', // 选中菜单字体色
+          colorBgMenuItemSelected: '#1890ff', // 选中菜单背景色
+          colorTextMenuItemHover: '#fff', // hover时字体颜色
+          colorTextMenu: '#eeec', // 字体颜色
+          colorBgMenuItemCollapsedElevated: '#001529', //菜单收起时背景色
+        },
+        // header: {
+        //   colorBgHeader: '#001529',
+        //   colorHeaderTitle: '#eeec',
+        //   colorTextMenu: '#eeec',
+        // },
       }}
     >
       <Outlet />
@@ -167,10 +181,10 @@ export function NavRightContent(props: NavRightContentProps): JSX.Element {
   }
 
   return (
-    <Dropdown overlay={menu}>
+    <Dropdown overlay={menu} className="">
       <Space className="px-[10px]">
         <Avatar
-          size="small"
+          size="large"
           src={
             avatar ||
             'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png'
